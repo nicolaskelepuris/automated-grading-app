@@ -14,7 +14,7 @@ class FileUploadForm extends React.Component {
 
     createRequest(form) {
         const body = new FormData(form);
-        return new Request('http://127.0.0.1:8000/upload-file', { method: 'POST', body })
+        return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } })
     }
 
     render() {
