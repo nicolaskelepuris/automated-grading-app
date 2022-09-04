@@ -15,7 +15,7 @@ class FileUploadForm extends React.Component {
 
     createRequest(form) {
         const body = new FormData(form);
-        return new Request('https://automated-grading-api.herokuapp.com/', { method: 'POST', body, header: { 'Accept': 'application/json' } })
+        return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } })
     }
 
     render() {
@@ -24,17 +24,18 @@ class FileUploadForm extends React.Component {
                 <h1>
                     <form onSubmit={this.handleSubmit}>
                         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-                         <label htmlFor="files" > Select files:</label>
-                        </div> 
+                            <label htmlFor="files" > Select files:</label>
+                        </div>
+
                         <input type="file" className='form-control' id="files" name="files" multiple accept="image/jpg, image/jpeg, image/png" />
-                         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
-                        <input type="submit" className='btn btn-primary mt-2' value="Enviar"/>
+
+                        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
+                            <input type="submit" className='btn btn-primary mt-2' value="Enviar"/>
                         </div>
                         <label htmlFor="files"></label>
-
                     </form>
                 </h1>
-                </div>
+            </div>
         );
     }
 }
