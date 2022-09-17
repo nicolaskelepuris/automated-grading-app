@@ -15,7 +15,7 @@ class ExamFiles extends React.Component {
     return (
       <div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <label htmlFor="files" > Select files:</label>
+          <label htmlFor="files" >Adicione as provas realizadas pelos alunos:</label>
         </div>
 
         <input type="file" className='form-control' id="files" name="files" multiple accept="image/jpg, image/jpeg, image/png" />
