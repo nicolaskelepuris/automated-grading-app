@@ -22,7 +22,21 @@ class Form extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const response = await fetch(this.createRequest(event.target));
-    console.log(await response.json());
+    const json = await response.json();
+
+    const csv = this.to_csv(json.data);
+    window.open(encodeURI(csv));
+  }
+
+  to_csv(data) {
+    const metadata = "data:text/csv;charset=utf-8,";
+    const headers = "compared_answers, correct_answers_count\n";
+    const rows = data.map(row => {
+      const compared_answers = row.compared_answers.map((a, i) => `${i + 1}: ${a ? 'correto' : 'incorreto'}`).join(" | ");
+      return compared_answers + "," + row.correct_count;
+    }).join("\n");
+
+    return metadata + headers + rows;
   }
 
   createRequest(form) {
