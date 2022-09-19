@@ -31,11 +31,11 @@ class ExamAnswers extends React.Component {
   render() {
     return (
       <div>
-        <table className='table'>
+        <table className='table table-striped table-bordered'>
           <thead>
             <tr>
-              <th>Question</th>
-              <th>Choices</th>
+              <th className='w-25 text-center'>Question</th>
+              <th className='w-75 text-center'>Choices</th>
             </tr>
           </thead>
           <tbody>
@@ -43,22 +43,21 @@ class ExamAnswers extends React.Component {
               [...Array(this.props.questionsCount).keys()].map((question) => {
                 return (
                   <tr key={question}>
-                    <td>{question}:</td>
-                    <td className='input-group'>
+                    <td className='text-center align-middle'>{question + 1}</td>
+                    <td className='answers input-group justify-content-between p-4'>
                       {
                         [...Array(this.props.choicesCount).keys()].map((choice) => {
                           return (
-                            <div className='ml-2' key={choice}>
-                              <label htmlFor={choice} >{this.intToChar(choice)} <br />
-                                <input
-                                  type="radio"
-                                  id={`${question}-${choice}`}
-                                  value={choice}
-                                  name={`${question}-${choice}`}
-                                  question={question}
-                                  checked={this.props.correctAnswers[question] === choice}
-                                  onChange={this.handleQuestionAnswerClick} />
-                              </label>
+                            <div key={choice}>
+                              <input
+                                type="radio"
+                                id={`${question}-${choice}`}
+                                value={choice}
+                                name={`${question}-${choice}`}
+                                question={question}
+                                checked={this.props.correctAnswers[question] === choice}
+                                onChange={this.handleQuestionAnswerClick} />
+                              <label htmlFor={`${question}-${choice}`} className={this.props.correctAnswers[question] === choice ? 'checked' : ''} >{this.intToChar(choice)}</label>
                             </div>
                           );
                         })
@@ -71,8 +70,10 @@ class ExamAnswers extends React.Component {
           </tbody>
         </table>
 
-        <button className='btn btn-danger mt-2' onClick={this.onPrevious}>Voltar</button>
-        <button className='btn btn-primary mt-2' onClick={this.onNext}>Avançar</button>
+        <div className='d-flex justify-content-between mt-2 mb-2'>
+          <button className='btn btn-secondary' onClick={this.onPrevious}>Voltar</button>
+          <button className='btn btn-primary' onClick={this.onNext}>Avançar</button>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,14 @@
+.answers input[type=radio] {
+  width: 35px;
+  height: 35px;
+}
+
+.answers label{
+  position: relative;
+  left: -22px;  
+  top: -12px;
+}
+
+.answers label.checked{
+  opacity: 0;
+}

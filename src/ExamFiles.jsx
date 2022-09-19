@@ -18,10 +18,12 @@ class ExamFiles extends React.Component {
           <label htmlFor="files" >Adicione as provas realizadas pelos alunos:</label>
         </div>
 
-        <input type="file" className='form-control' id="files" name="files" multiple accept="image/jpg, image/jpeg, image/png" />
+        <input type="file" required className='form-control' id="files" name="files" multiple accept="image/jpg, image/jpeg, image/png" />
 
-        <button className='btn btn-danger mt-2' onClick={this.onPrevious}>Voltar</button>
-        <input type="submit" className='btn btn-primary mt-2' value="Enviar" />
+        <div className='d-flex justify-content-between mt-2 mb-2'>
+          <button className='btn btn-secondary mt-2' onClick={this.onPrevious}>Voltar</button>
+          <input type="submit" className='btn btn-primary mt-2' value="Enviar" />
+        </div>
       </div>
     );
   }
