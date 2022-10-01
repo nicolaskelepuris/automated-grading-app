@@ -49,10 +49,11 @@ class Form extends React.Component {
 
   to_csv(data) {
     const metadata = "data:text/csv;charset=utf-8,";
-    const headers = "compared_answers, correct_answers_count\n";
+    const headers = "id, compared_answers, correct_answers_count\n";
     const rows = data.map(row => {
       const compared_answers = row.compared_answers.map((a, i) => `${i + 1}: ${a ? 'correto' : 'incorreto'}`).join(" | ");
-      return compared_answers + "," + row.correct_count;
+      const id = `id ${row.id.join('')}`;
+      return id + "," + compared_answers + "," + row.correct_count;
     }).join("\n");
 
     return metadata + headers + rows;
