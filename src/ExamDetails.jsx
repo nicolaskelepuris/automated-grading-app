@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ExamDetails extends React.Component {
   constructor(props) {
@@ -6,7 +7,9 @@ class ExamDetails extends React.Component {
 
     this.onChangeQuestionsCount = this.onChangeQuestionsCount.bind(this);
     this.onChangeChoicesCount = this.onChangeChoicesCount.bind(this);
+    this.onChangeIdLength = this.onChangeIdLength.bind(this);
     this.onNext = this.onNext.bind(this);
+    this.generateModelUrl = this.generateModelUrl.bind(this);
   }
 
   onChangeQuestionsCount(event) {
@@ -17,8 +20,16 @@ class ExamDetails extends React.Component {
     this.props.onChangeChoicesCount(parseInt(event.target.value));
   }
 
+  onChangeIdLength(event) {
+    this.props.onChangeIdLength(parseInt(event.target.value));
+  }
+
   onNext(event) {
     this.props.onNext(event);
+  }
+
+  generateModelUrl() {
+    return `/generate-model/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`
   }
 
   render() {
@@ -30,7 +41,13 @@ class ExamDetails extends React.Component {
         <label htmlFor="choicesCount" >Quantidade de opções por questão:</label>
         <input type="number" className='form-control' value={this.props.choicesCount} onChange={this.onChangeChoicesCount} id="choicesCount" name="choicesCount" />
 
-        <button className='btn btn-primary mt-2' onClick={this.onNext}>Preencher gabarito</button>
+        <label htmlFor="idLength" >Quantidade de digitos na matrícula/identificador:</label>
+        <input type="number" className='form-control' value={this.props.idLength} onChange={this.onChangeIdLength} id="idLength" name="idLength" />
+
+        <div className='d-flex justify-content-between'>
+          <Link to={this.generateModelUrl()} target="_blank" rel="noopener noreferrer">Gerar modelo da prova</Link>
+          <button className='btn btn-primary mt-2' onClick={this.onNext}>Preencher gabarito</button>
+        </div>
       </div>
     );
   }

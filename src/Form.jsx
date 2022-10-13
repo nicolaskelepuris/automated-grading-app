@@ -11,6 +11,7 @@ class Form extends React.Component {
       questionsCount: 10,
       choicesCount: 5,
       correctAnswers: Array(10),
+      idLength: 2,
       state: 'details',
       error: false,
       success: false
@@ -44,6 +45,7 @@ class Form extends React.Component {
     const body = new FormData(form);
     body.append('choicesCount', this.state.choicesCount);
     body.append('correctAnswers', JSON.stringify(this.state.correctAnswers));
+    body.append('id_digits_count', JSON.stringify(this.state.idLength));
     return new Request('http://localhost:8000/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
   }
 
@@ -109,6 +111,10 @@ class Form extends React.Component {
     this.setState({ choicesCount: value });
   };
 
+  onChangeIdLength = (value) => {
+    this.setState({ idLength: value });
+  };
+
   render() {
     return (
       <div>
@@ -118,8 +124,10 @@ class Form extends React.Component {
               onNext={this.nextState}
               questionsCount={this.state.questionsCount}
               choicesCount={this.state.choicesCount}
+              idLength={this.state.idLength}
               onChangeQuestionsCount={this.onChangeQuestionsCount}
               onChangeChoicesCount={this.onChangeChoicesCount}
+              onChangeIdLength={this.onChangeIdLength}
             />}
 
             {this.state.state === 'answers' && <ExamAnswers onPrevious={this.previousState}
