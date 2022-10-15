@@ -1,5 +1,5 @@
 import React from 'react';
-import ExamAnswers from './ExamAnswers';
+import ExamCorrectAnswers from './ExamCorrectAnswers';
 import ExamDetails from './ExamDetails';
 import ExamFiles from './ExamFiles';
 import './Form.css';
@@ -130,19 +130,14 @@ class Form extends React.Component {
               onChangeIdLength={this.onChangeIdLength}
             />}
 
-            {this.state.state === 'answers'
-              && <ExamAnswers onPrevious={this.previousState}
-                onNext={this.nextState}
-                questionsCount={this.state.questionsCount}
-                choicesCount={this.state.choicesCount}
-                correctAnswers={this.state.correctAnswers}
-                onAnswerSelected={this.onAnswerSelected}
-              />}
-            {this.state.state === 'answers'
-              && <div className='d-flex justify-content-between mt-2 mb-2'>
-                <button className='btn btn-secondary' onClick={this.previousState}>Voltar</button>
-                <button className='btn btn-primary' onClick={this.nextState}>Avançar</button>
-              </div>}
+            {this.state.state === 'answers' && <ExamCorrectAnswers
+              onPrevious={this.previousState}
+              onNext={this.nextState}
+              questionsCount={this.state.questionsCount}
+              choicesCount={this.state.choicesCount}
+              correctAnswers={this.state.correctAnswers}
+              onAnswerSelected={this.onAnswerSelected}
+            />}
 
             {this.state.state === 'files' && <ExamFiles onPrevious={this.previousState} />}
             {this.state.error && <div className="alert alert-danger mt-4" role="alert">Erro!</div>}

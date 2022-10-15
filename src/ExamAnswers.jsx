@@ -21,11 +21,6 @@ class ExamAnswers extends React.Component {
   render() {
     return (
       <table className='table table-striped table-bordered'>
-        <thead>
-          <tr>
-            <th className='w-25 text-center' colSpan={3}>Gabarito</th>
-          </tr>
-        </thead>
         <tbody>
           {
             [...Array(this.props.questionsCount).keys()].map((question) => {
