@@ -2,6 +2,7 @@ import React from 'react';
 import ExamAnswers from './ExamAnswers';
 import ExamId from './ExamId';
 import html2canvas from "html2canvas";
+import './ExamModel.css';
 
 class ExamModel extends React.Component {
   generateImage() {
@@ -27,16 +28,18 @@ class ExamModel extends React.Component {
     return (
       <>
         <div className='m-5 d-flex justify-content-center'><button className='btn btn-primary' onClick={this.generateImage}>Baixar modelo</button></div>
-        <div id='exam-model'>
-          <ExamId idLength={this.props.idLength} />
-          <ExamAnswers
-            onPrevious={() => { }}
-            onNext={() => { }}
-            questionsCount={this.props.questionsCount}
-            choicesCount={this.props.choicesCount}
-            correctAnswers={[]}
-            onAnswerSelected={() => { }}
-          />
+        <div id='exam-model' className='page'>
+          <div className='w-75 m-auto'>
+            <ExamId idLength={this.props.idLength} />
+            <ExamAnswers
+              onPrevious={() => { }}
+              onNext={() => { }}
+              questionsCount={this.props.questionsCount}
+              choicesCount={this.props.choicesCount}
+              correctAnswers={[]}
+              onAnswerSelected={() => { }}
+            />
+          </div>
         </div>
       </>
     );
