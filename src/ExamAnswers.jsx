@@ -23,8 +23,7 @@ class ExamAnswers extends React.Component {
       <table className='table table-striped table-bordered'>
         <thead>
           <tr>
-            <th className='w-25 text-center'>Question</th>
-            <th className='w-75 text-center'>Choices</th>
+            <th className='w-25 text-center' colSpan={3}>Gabarito</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +32,7 @@ class ExamAnswers extends React.Component {
               return (
                 <tr key={question}>
                   <td className='text-center align-middle'>{question + 1}</td>
-                  <td className='answers input-group justify-content-between p-4'>
+                  <td className='answers input-group justify-content-around p-4'>
                     {
                       [...Array(this.props.choicesCount).keys()].map((choice) => {
                         return (
