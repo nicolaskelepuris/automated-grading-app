@@ -3,12 +3,22 @@
   height: 35px;
 }
 
-.answers label{
+.answers label {
   position: relative;
-  left: -22px;  
-  top: -12px;
+  left: -22px;
+  top: 5px;
 }
 
-.answers label.checked{
+.answers label.checked {
   opacity: 0;
+}
+
+.answers {
+  height: 50px;
+  display: flex;
+  align-content: center;
+}
+
+.answers div {
+  display: flex;
 }

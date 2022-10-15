@@ -26,7 +26,7 @@ class ExamAnswers extends React.Component {
             [...Array(this.props.questionsCount).keys()].map((question) => {
               return (
                 <tr key={question}>
-                  <td className='text-center align-middle'>{question + 1}</td>
+                  <td className='text-center'>{question + 1}</td>
                   <td className='answers input-group justify-content-around p-4'>
                     {
                       [...Array(this.props.choicesCount).keys()].map((choice) => {
