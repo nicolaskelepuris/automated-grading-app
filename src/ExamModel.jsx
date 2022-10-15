@@ -4,8 +4,7 @@ import ExamId from './ExamId';
 import html2canvas from "html2canvas";
 
 class ExamModel extends React.Component {
-  componentDidMount() {
-    console.log(this.props)
+  generateImage() {
     html2canvas(document.getElementById("exam-model"))
       .then(canvas => {
         const data = canvas.toDataURL('image/jpg');
@@ -26,17 +25,20 @@ class ExamModel extends React.Component {
 
   render() {
     return (
-      <div id='exam-model'>
-        <ExamId idLength={this.props.idLength} />
-        <ExamAnswers
-          onPrevious={() => { }}
-          onNext={() => { }}
-          questionsCount={this.props.questionsCount}
-          choicesCount={this.props.choicesCount}
-          correctAnswers={[]}
-          onAnswerSelected={() => { }}
-        />
-      </div>
+      <>
+        <div className='m-5 d-flex justify-content-center'><button className='btn btn-primary' onClick={this.generateImage}>Baixar modelo</button></div>
+        <div id='exam-model'>
+          <ExamId idLength={this.props.idLength} />
+          <ExamAnswers
+            onPrevious={() => { }}
+            onNext={() => { }}
+            questionsCount={this.props.questionsCount}
+            choicesCount={this.props.choicesCount}
+            correctAnswers={[]}
+            onAnswerSelected={() => { }}
+          />
+        </div>
+      </>
     );
   }
 }
