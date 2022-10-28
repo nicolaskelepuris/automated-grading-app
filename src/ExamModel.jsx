@@ -28,20 +28,22 @@ class ExamModel extends React.Component {
     return (
       <>
         <div className='m-5 d-flex justify-content-center'><button className='btn btn-primary' onClick={this.generateImage}>Baixar modelo</button></div>
-        <div id='exam-model' className='page'>
-          <div className='w-75 h-100 m-auto'>
-            <div id='exam-model-identifier'>
-              <ExamId idLength={this.props.idLength} />
-            </div>
-            <div id='exam-model-answers'>
-              <ExamAnswers
-                onPrevious={() => { }}
-                onNext={() => { }}
-                questionsCount={this.props.questionsCount}
-                choicesCount={this.props.choicesCount}
-                correctAnswers={[]}
-                onAnswerSelected={() => { }}
-              />
+        <div className='page-wrapper'>
+          <div id='exam-model' className='page'>
+            <div className='w-75 h-100 m-auto'>
+              <div id='exam-model-identifier'>
+                <ExamId idLength={this.props.idLength} />
+              </div>
+              <div id='exam-model-answers'>
+                <ExamAnswers
+                  onPrevious={() => { }}
+                  onNext={() => { }}
+                  questionsCount={this.props.questionsCount}
+                  choicesCount={this.props.choicesCount}
+                  correctAnswers={[]}
+                  onAnswerSelected={() => { }}
+                />
+              </div>
             </div>
           </div>
         </div>
