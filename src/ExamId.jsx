@@ -1,4 +1,5 @@
 import React from 'react';
+import './ExamId.css';
 
 class ExamId extends React.Component {
   render() {
@@ -6,7 +7,7 @@ class ExamId extends React.Component {
       <table className='table table-striped table-bordered'>
         <thead>
           <tr>
-            <th className='w-25 text-center'>Identificador</th>
+            <th className='w-25 text-center id-frame-label'>Identificador</th>
           </tr>
         </thead>
         <tbody>
@@ -14,11 +15,11 @@ class ExamId extends React.Component {
             [...Array(this.props.idLength).keys()].map((digit) => {
               return (
                 <tr key={digit}>
-                  <td className='answers input-group justify-content-between p-4'>
+                  <td className='id-answers input-group align-items-center'>
                     {
                       [...Array(10).keys()].map((choice) => {
                         return (
-                          <div key={choice}>
+                          <div key={choice} className='d-flex align-items-center'>
                             <input
                               type="radio"
                               id={`${digit}-${choice}`}

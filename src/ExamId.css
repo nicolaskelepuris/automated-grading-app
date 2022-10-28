@@ -1,0 +1,25 @@
+.id-answers input[type=radio] {
+  width: 18px;
+  height: 18px;
+}
+
+.id-answers label {
+  position: relative;
+  left: -13.2px;
+  top: 4px;
+  font-size: 0.35cm;
+}
+
+.id-answers label.checked {
+  opacity: 0;
+}
+
+.id-answers {
+  height: 30px;
+  padding: 0px !important;
+  justify-content: space-evenly;
+}
+
+.id-frame-label {
+  padding: 5px 12px !important;
+}
