@@ -1,6 +1,7 @@
 import React from 'react';
-import ExamAnswers from './ExamAnswers';
+import ExamHeader from './ExamHeader';
 import ExamId from './ExamId';
+import ExamAnswers from './ExamAnswers';
 import html2canvas from "html2canvas";
 import './ExamModel.css';
 
@@ -31,6 +32,9 @@ class ExamModel extends React.Component {
         <div className='page-wrapper'>
           <div id='exam-model' className='page'>
             <div className='w-75 h-100 m-auto'>
+              <div id='exam-model-header'>
+                <ExamHeader />
+              </div>
               <div id='exam-model-identifier'>
                 <ExamId idLength={this.props.idLength} />
               </div>

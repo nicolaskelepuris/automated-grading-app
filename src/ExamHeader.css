@@ -1,0 +1,23 @@
+.exam-header input {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid black;
+  margin-left: 5px;
+}
+
+.exam-header-name {
+  width: 8cm;
+}
+
+.exam-header-date {
+  width: 3cm;
+}
+
+.exam-header input[type="date"]::-webkit-inner-spin-button,
+.exam-header input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.exam-header input.picker[type="date"] {
+  position: relative;
+}

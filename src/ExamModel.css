@@ -14,10 +14,14 @@
   margin-bottom: 1cm;
 }
 
+#exam-model-header {
+  padding-top: 1cm;
+}
+
 #exam-model-identifier {
-  padding-top: 2cm;
+  padding-top: 1cm;
 }
 
 #exam-model-answers {
-  padding-top: 2cm;
+  padding-top: 1cm;
 }

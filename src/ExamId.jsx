@@ -8,7 +8,7 @@ class ExamId extends React.Component {
       <table className='table table-striped table-bordered'>
         <thead>
           <tr>
-            <th className='w-25 text-center id-frame-label'>Identificador</th>
+            <th className='w-25 text-center id-frame-label'>Matrícula</th>
           </tr>
         </thead>
         <tbody>
