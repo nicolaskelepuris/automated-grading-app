@@ -22,3 +22,9 @@
 .answers div {
   display: flex;
 }
+
+.question-label {
+  width: 35px;
+  height: 35px;
+  align-items: center;
+}
