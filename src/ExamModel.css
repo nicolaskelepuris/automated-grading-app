@@ -3,4 +3,13 @@
   height: 29.7cm;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid rgb(199, 194, 194);
+}
+
+#exam-model-identifier {
+  padding-top: 2cm;
+}
+
+#exam-model-answers {
+  padding-top: 2cm;
 }
