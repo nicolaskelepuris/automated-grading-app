@@ -27,7 +27,7 @@ class ExamAnswers extends React.Component {
             [...Array(this.props.questionsCount).keys()].map((question) => {
               return (
                 <tr key={question}>
-                  <td className='answers input-group justify-content-around p-4'>
+                  <td className='answers input-group align-items-center'>
                     <div className='question-label'>
                       {question + 1}
                     </div>

@@ -1,12 +1,13 @@
 .answers input[type=radio] {
-  width: 35px;
-  height: 35px;
+  width: 18px;
+  height: 18px;
 }
 
 .answers label {
   position: relative;
-  left: -22px;
-  top: 5px;
+  left: -13px;
+  top: 4px;
+  font-size: 0.35cm;
 }
 
 .answers label.checked {
@@ -14,17 +15,18 @@
 }
 
 .answers {
-  height: 50px;
-  display: flex;
-  align-content: center;
+  height: 30px;
+  padding: 0px !important;
+  justify-content: space-evenly;
 }
 
 .answers div {
   display: flex;
+  align-items: center;
 }
 
 .question-label {
-  width: 35px;
-  height: 35px;
+  width: 18px;
+  height: 18px;
   align-items: center;
 }

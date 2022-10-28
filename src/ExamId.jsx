@@ -1,5 +1,6 @@
 import React from 'react';
 import './ExamId.css';
+import './ExamAnswers.css';
 
 class ExamId extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class ExamId extends React.Component {
             [...Array(this.props.idLength).keys()].map((digit) => {
               return (
                 <tr key={digit}>
-                  <td className='id-answers input-group align-items-center'>
+                  <td className='answers input-group align-items-center'>
                     {
                       [...Array(10).keys()].map((choice) => {
                         return (
