@@ -1,4 +1,5 @@
 import React from 'react';
+import './ExamAnswers.css';
 
 class ExamAnswers extends React.Component {
   constructor(props) {

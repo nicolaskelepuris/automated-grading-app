@@ -2,7 +2,6 @@ import React from 'react';
 import ExamCorrectAnswers from './ExamCorrectAnswers';
 import ExamDetails from './ExamDetails';
 import ExamFiles from './ExamFiles';
-import './Form.css';
 
 class Form extends React.Component {
   constructor(props) {
