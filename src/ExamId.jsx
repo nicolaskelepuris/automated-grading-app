@@ -5,7 +5,7 @@ import './ExamAnswers.css';
 class ExamId extends React.Component {
   render() {
     return (
-      <table className='table table-striped table-bordered'>
+      <table className='table table-striped table-bordered thick-border'>
         <thead>
           <tr>
             <th className='w-25 text-center id-frame-label'>Matrícula</th>

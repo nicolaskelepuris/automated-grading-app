@@ -30,3 +30,7 @@
   height: 18px;
   align-items: center;
 }
+
+.thick-border {
+  border: 4px solid black;
+}
