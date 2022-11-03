@@ -29,7 +29,7 @@ class ExamDetails extends React.Component {
   }
 
   generateModelUrl() {
-    return `/generate-model/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`
+    return `/generate-model/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`;
   }
 
   render() {
@@ -38,13 +38,16 @@ class ExamDetails extends React.Component {
         <label htmlFor="questionsCount" >Quantidade de questões:</label>
         <input type="number" className='form-control' value={this.props.questionsCount} onChange={this.onChangeQuestionsCount} id="questionsCount" name="questionsCount" />
 
-        <label htmlFor="choicesCount" >Quantidade de opções por questão:</label>
+        <label htmlFor="choicesCount" className='pt-4' >Quantidade de opções por questão:</label>
         <input type="number" className='form-control' value={this.props.choicesCount} onChange={this.onChangeChoicesCount} id="choicesCount" name="choicesCount" />
+        <small id="passwordHelpBlock" class="form-text text-muted">
+          Quantas letras existem em cada questão. Exemplo: 5 gera questões com opções de A até E
+        </small>
 
-        <label htmlFor="idLength" >Quantidade de digitos na matrícula/identificador:</label>
+        <label htmlFor="idLength" className='pt-4' >Quantidade de digitos na matrícula/identificador:</label>
         <input type="number" className='form-control' value={this.props.idLength} onChange={this.onChangeIdLength} id="idLength" name="idLength" />
 
-        <div className='d-flex justify-content-between'>
+        <div className='d-flex justify-content-between pt-4'>
           <Link to={this.generateModelUrl()} target="_blank" rel="noopener noreferrer">Gerar modelo da prova</Link>
           <button className='btn btn-primary mt-2' onClick={this.onNext}>Preencher gabarito</button>
         </div>

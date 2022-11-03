@@ -10,7 +10,7 @@ class Form extends React.Component {
       questionsCount: 10,
       choicesCount: 5,
       correctAnswers: Array(10),
-      idLength: 2,
+      idLength: 9,
       state: 'details',
       error: false,
       success: false
