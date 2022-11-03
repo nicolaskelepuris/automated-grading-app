@@ -44,7 +44,7 @@ class ExamDetails extends React.Component {
           Quantas letras existem em cada questão. Exemplo: 5 gera questões com opções de A até E
         </small>
 
-        <label htmlFor="idLength" className='pt-4' >Quantidade de digitos na matrícula/identificador:</label>
+        <label htmlFor="idLength" className='pt-4' >Quantidade de digitos na matrícula/identificador do aluno:</label>
         <input type="number" className='form-control' value={this.props.idLength} onChange={this.onChangeIdLength} id="idLength" name="idLength" />
 
         <div className='d-flex justify-content-between pt-4'>
