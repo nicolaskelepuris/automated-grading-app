@@ -2,6 +2,7 @@ import React from 'react';
 import ExamCorrectAnswers from './ExamCorrectAnswers';
 import ExamDetails from './ExamDetails';
 import ExamFiles from './ExamFiles';
+import Loading from "./Loading";
 
 class Form extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class Form extends React.Component {
       idLength: 9,
       state: 'details',
       error: false,
-      success: false
+      success: false,
+      loading: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,12 +26,15 @@ class Form extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+    this.setState({ loading: true });
     var response;
     try {
       response = await fetch(this.createRequest(event.target));
       if (response.status !== 200) return this.setError();
     } catch (error) {
       return this.setError();
+    } finally {
+      this.setState({ loading: false });
     }
 
     this.setSuccess();
@@ -148,6 +153,7 @@ class Form extends React.Component {
             {this.state.success && <div className="alert alert-success mt-4" role="alert">Sucesso!</div>}
           </div>
         </form>
+        {this.state.loading && <Loading />}
       </div>
     );
   }
