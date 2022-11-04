@@ -10,6 +10,8 @@ class ExamDetails extends React.Component {
     this.onChangeIdLength = this.onChangeIdLength.bind(this);
     this.onNext = this.onNext.bind(this);
     this.generateModelUrl = this.generateModelUrl.bind(this);
+    this.onGenerateExamLinkClick = this.onGenerateExamLinkClick.bind(this);
+    this.generateExamUrl = this.generateExamUrl.bind(this);
   }
 
   onChangeQuestionsCount(event) {
@@ -29,7 +31,11 @@ class ExamDetails extends React.Component {
   }
 
   generateModelUrl() {
-    return `/generate-model/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`;
+    return `/gerar-modelo/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`;
+  }
+
+  generateExamUrl() {
+    return `/realizar-prova/${this.props.idLength}/${this.props.questionsCount}/${this.props.choicesCount}`;
   }
 
   render() {
@@ -51,6 +57,7 @@ class ExamDetails extends React.Component {
           <Link to={this.generateModelUrl()} target="_blank" rel="noopener noreferrer">Gerar modelo da prova</Link>
           <button className='btn btn-primary mt-2' onClick={this.onNext}>Preencher gabarito</button>
         </div>
+        <Link to={this.generateExamUrl()} target="_blank" rel="noopener noreferrer">Link para alunos realizarem a prova</Link>
       </div>
     );
   }

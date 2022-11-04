@@ -14,7 +14,11 @@ class Exam extends React.Component {
               <ExamHeader readonly={this.props.readonlyHeader} />
             </div>
             <div id='exam-model-identifier'>
-              <ExamId idLength={this.props.idLength} />
+              <ExamId 
+                idLength={this.props.idLength}
+                onIdSelected={this.props.onIdSelected}
+                ids={this.props.ids}
+              />
             </div>
             <div id='exam-model-answers'>
               <ExamAnswers

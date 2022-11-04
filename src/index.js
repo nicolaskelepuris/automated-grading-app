@@ -9,10 +9,16 @@ import {
 
 import Form from './Form';
 import ExamModel from './ExamModel';
+import StudentExam from './StudentExam';
 
 function ExamModelComponent() {
   const { idLength, questionsCount, choicesCount } = useParams();
   return <ExamModel idLength={parseInt(idLength)} questionsCount={parseInt(questionsCount)} choicesCount={parseInt(choicesCount)} />;
+}
+
+function StudentExamComponent() {
+  const { idLength, questionsCount, choicesCount } = useParams();
+  return <StudentExam idLength={parseInt(idLength)} questionsCount={parseInt(questionsCount)} choicesCount={parseInt(choicesCount)} />;
 }
 
 
@@ -22,7 +28,8 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Form />} />
-        <Route path="/generate-model/:idLength/:questionsCount/:choicesCount" element={<ExamModelComponent />} />
+        <Route path="/gerar-modelo/:idLength/:questionsCount/:choicesCount" element={<ExamModelComponent />} />
+        <Route path="/realizar-prova/:idLength/:questionsCount/:choicesCount" element={<StudentExamComponent />} />
       </Routes>
     </Router>
   </>

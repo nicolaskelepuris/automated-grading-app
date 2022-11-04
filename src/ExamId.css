@@ -1,3 +1,7 @@
 .id-frame-label {
   padding: 1.5px 12px !important;
 }
+
+.answers label.checked {
+  opacity: 0;
+}
