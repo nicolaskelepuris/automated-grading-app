@@ -9,6 +9,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       questionsCount: 10,
+      questionWeights: Array(10).fill(1),
       choicesCount: 5,
       correctAnswers: Array(10),
       idLength: 9,
@@ -22,6 +23,7 @@ class Form extends React.Component {
     this.onAnswerSelected = this.onAnswerSelected.bind(this);
     this.onChangeQuestionsCount = this.onChangeQuestionsCount.bind(this);
     this.onChangeChoicesCount = this.onChangeChoicesCount.bind(this);
+    this.onChangeQuestionWeight = this.onChangeQuestionWeight.bind(this);
   }
 
   async handleSubmit(event) {
@@ -55,17 +57,20 @@ class Form extends React.Component {
     const body = new FormData(form);
     body.append('choicesCount', this.state.choicesCount);
     body.append('correctAnswers', JSON.stringify(this.state.correctAnswers));
-    body.append('id_digits_count', JSON.stringify(this.state.idLength));
-    return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
+    body.append('id_digits_count', this.state.idLength);
+    body.append('questionWeights', JSON.stringify(this.state.questionWeights));
+    // return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
+    return new Request('http://127.0.0.1:8000/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
   }
 
   to_csv(data) {
     const metadata = "data:text/csv;charset=utf-8,";
-    const headers = "matricula, acertos, questoes certas\n";
+    const headers = "matricula, nota, acertos, questoes certas\n";
     const rows = data.map(row => {
       const compared_answers = row.compared_answers.map((a, i) => a ? i + 1 : null).filter(a => a).join(' | ');
       const id = `="${row.id.join('')}"`;
-      return id + "," + row.correct_count + "," + compared_answers;
+      const score = `="${row.score}"`
+      return id + "," + score + "," + row.correct_count + "," + compared_answers;
     }).join("\n");
 
     return metadata + headers + rows;
@@ -112,8 +117,15 @@ class Form extends React.Component {
   onChangeQuestionsCount = (value) => {
     this.setState({
       questionsCount: value,
-      correctAnswers: Array(value)
+      correctAnswers: Array(value),
+      questionWeights: Array(value).fill(1)
     });
+  };
+
+  onChangeQuestionWeight = (index, value) => {
+    const weights = this.state.questionWeights;
+    weights[index] = value;
+    this.setState({ questionWeights: weights });
   };
 
   onChangeChoicesCount = (value) => {
@@ -146,6 +158,8 @@ class Form extends React.Component {
               choicesCount={this.state.choicesCount}
               correctAnswers={this.state.correctAnswers}
               onAnswerSelected={this.onAnswerSelected}
+              onChangeWeight={this.onChangeQuestionWeight}
+              weights={this.state.questionWeights}
             />}
 
             {this.state.state === 'files' && <ExamFiles onPrevious={this.previousState} />}

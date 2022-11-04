@@ -1,22 +1,25 @@
 import React from 'react';
 
 import ExamAnswers from './ExamAnswers';
+import './ExamCorrectAnswers.css';
 
 class ExamCorrectAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: false
+      error: false,
+      showWeights: false
     };
 
     this.onNext = this.onNext.bind(this);
     this.onPrevious = this.onPrevious.bind(this);
+    this.onChangeWeight = this.onChangeWeight.bind(this);
+    this.onShowWeights = this.onShowWeights.bind(this);
   }
 
   onNext(event) {
     event.preventDefault();
-    if (this.props.correctAnswers.filter(a => typeof a === 'number').length === this.props.questionsCount)
-    {
+    if (this.props.correctAnswers.filter(a => typeof a === 'number').length === this.props.questionsCount) {
       this.props.onNext(event);
     } else {
       this.setError();
@@ -34,6 +37,16 @@ class ExamCorrectAnswers extends React.Component {
     this.props.onPrevious(event);
   }
 
+  onChangeWeight(index, event) {
+    const value = parseFloat(event.target.value) || 0;
+    this.props.onChangeWeight(index, value);
+  }
+
+  onShowWeights(event) {
+    event.preventDefault();
+    this.setState({ showWeights: true });
+  }
+
   render() {
     return (
       <>
@@ -44,6 +57,37 @@ class ExamCorrectAnswers extends React.Component {
           correctAnswers={this.props.correctAnswers}
           onAnswerSelected={this.props.onAnswerSelected}
         />
+        {
+          !this.state.showWeights &&
+          <button className='btn btn-primary' onClick={this.onShowWeights}>Adicionar pesos às questões</button>
+        }
+        {
+          this.state.showWeights &&
+          <div>
+            <h2>Pesos</h2>
+            <div className='d-flex flex-wrap'>
+              {
+                [...this.props.weights.keys()].map((weight) => {
+                  return (
+                    <div key={weight} className='p-3'>
+                      <label htmlFor={`weight-${weight}`} >Questão {weight + 1}:</label>
+                      <input
+                        type='number'
+                        min='0'
+                        step='0.5'
+                        className='form-control question-weight'
+                        value={this.props.weights[weight]}
+                        onChange={e => this.onChangeWeight(weight, e)}
+                        id={`weight-${weight}`}
+                        name={`weight-${weight}`}
+                      />
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        }
         <div className='d-flex justify-content-between mt-4 mb-4'>
           <button className='btn btn-secondary' onClick={this.onPrevious}>Voltar</button>
           <button className='btn btn-primary' onClick={this.onNext}>Avançar</button>
