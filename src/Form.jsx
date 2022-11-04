@@ -59,8 +59,7 @@ class Form extends React.Component {
     body.append('correctAnswers', JSON.stringify(this.state.correctAnswers));
     body.append('id_digits_count', this.state.idLength);
     body.append('questionWeights', JSON.stringify(this.state.questionWeights));
-    // return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
-    return new Request('http://127.0.0.1:8000/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
+    return new Request('https://automated-grading-api.herokuapp.com/upload-file', { method: 'POST', body, header: { 'Accept': 'application/json' } });
   }
 
   to_csv(data) {
