@@ -3,7 +3,9 @@ import './ExamHeader.css';
 
 class ExamHeader extends React.Component {
   transformToDate() {
-    document.getElementById("exam-date").type = 'date';
+    if (!this.props.readonly) {
+      document.getElementById("exam-date").type = 'date';
+    }
   }
 
   render() {
@@ -11,12 +13,12 @@ class ExamHeader extends React.Component {
       <div className='exam-header d-flex justify-content-between'>
         <div>
           <label for='name'>Nome:</label>
-          <input id='name' type='text' className='exam-header-name'></input>
+          <input id='name' type='text' readOnly={this.props.readonly} className='exam-header-name'></input>
         </div>
 
         <div>
           <label for='exam-date'>Data:</label>
-          <input id='exam-date' type='text' className='exam-header-date' placeholder='' onFocus={this.transformToDate}></input>
+          <input id='exam-date' type='text' readOnly={this.props.readonly} className='exam-header-date' placeholder='' onFocus={this.transformToDate}></input>
         </div>
       </div>
     );

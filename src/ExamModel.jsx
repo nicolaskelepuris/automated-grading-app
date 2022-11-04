@@ -33,7 +33,7 @@ class ExamModel extends React.Component {
           <div id='exam-model' className='page'>
             <div className='w-75 h-100 m-auto'>
               <div id='exam-model-header'>
-                <ExamHeader />
+                <ExamHeader readonly={true} />
               </div>
               <div id='exam-model-identifier'>
                 <ExamId idLength={this.props.idLength} />
