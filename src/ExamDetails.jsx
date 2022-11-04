@@ -10,7 +10,6 @@ class ExamDetails extends React.Component {
     this.onChangeIdLength = this.onChangeIdLength.bind(this);
     this.onNext = this.onNext.bind(this);
     this.generateModelUrl = this.generateModelUrl.bind(this);
-    this.onGenerateExamLinkClick = this.onGenerateExamLinkClick.bind(this);
     this.generateExamUrl = this.generateExamUrl.bind(this);
   }
 
