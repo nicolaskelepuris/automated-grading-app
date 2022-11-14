@@ -43,10 +43,10 @@ class ExamDetails extends React.Component {
         <label htmlFor="questionsCount" >Quantidade de questões:</label>
         <input type="number" className='form-control' value={this.props.questionsCount} onChange={this.onChangeQuestionsCount} id="questionsCount" name="questionsCount" />
 
-        <label htmlFor="choicesCount" className='pt-4' >Quantidade de opções por questão:</label>
+        <label htmlFor="choicesCount" className='pt-4' >Quantidade de alternativas por questão:</label>
         <input type="number" className='form-control' value={this.props.choicesCount} onChange={this.onChangeChoicesCount} id="choicesCount" name="choicesCount" />
         <small id="passwordHelpBlock" className="form-text text-muted">
-          Quantas letras existem em cada questão. Exemplo: 5 gera questões com opções de A até E
+          Quantas letras existem em cada questão. Exemplo: 5 gera questões com alternativas de A até E
         </small>
 
         <label htmlFor="idLength" className='pt-4' >Quantidade de digitos na matrícula/identificador do aluno:</label>
